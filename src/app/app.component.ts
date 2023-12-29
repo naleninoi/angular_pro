@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { User } from './auth-form/auth-form.interface';
+import { User } from './auth-form-module/models/auth-form.interface';
 
 @Component({
   selector: 'app-root',
