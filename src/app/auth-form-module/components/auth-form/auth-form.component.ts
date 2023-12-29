@@ -5,7 +5,7 @@ import {
   AfterContentInit,
   ContentChild,
   AfterViewInit,
-  ViewChild, ChangeDetectorRef
+  ViewChild, ChangeDetectorRef, ElementRef
 } from '@angular/core';
 
 import { User } from '../../models/auth-form.interface';
@@ -15,6 +15,13 @@ import { AuthMessageComponent } from '../../auth-message/auth-message.component'
 @Component({
   selector: 'auth-form',
   templateUrl: './auth-form.component.html',
+  styles: [
+    `
+      .email {
+        border-color: #9f72e6;
+      }
+    `
+  ]
 })
 export class AuthFormComponent implements AfterContentInit, AfterViewInit {
 
@@ -23,6 +30,8 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
   @ContentChild(AuthRememberComponent) remember: AuthRememberComponent;
 
   @ViewChild(AuthMessageComponent) message: AuthMessageComponent;
+
+  @ViewChild('email') email: ElementRef;
 
   @Output() submitted: EventEmitter<User> = new EventEmitter<User>();
 
@@ -36,6 +45,10 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this.email.nativeElement.setAttribute('placeholder', 'Enter your email address');
+    this.email.nativeElement.classList.add('email');
+    this.email.nativeElement.focus();
+    console.log(this.email.nativeElement);
     if (this.message) {
       this.message.days = 30;
       this.cd.detectChanges();
