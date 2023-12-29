@@ -5,7 +5,7 @@ import {
   AfterContentInit,
   ContentChild,
   AfterViewInit,
-  ViewChild, ChangeDetectorRef, ElementRef
+  ViewChild, ChangeDetectorRef, ElementRef, Renderer2
 } from '@angular/core';
 
 import { User } from '../../models/auth-form.interface';
@@ -35,7 +35,10 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
 
   @Output() submitted: EventEmitter<User> = new EventEmitter<User>();
 
-  constructor(private cd: ChangeDetectorRef) {
+  constructor(
+    private cd: ChangeDetectorRef,
+    private renderer: Renderer2
+    ) {
   }
 
   ngAfterContentInit(): void {
@@ -45,10 +48,12 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.email.nativeElement.setAttribute('placeholder', 'Enter your email address');
-    this.email.nativeElement.classList.add('email');
-    this.email.nativeElement.focus();
-    console.log(this.email.nativeElement);
+    // this.email.nativeElement.setAttribute('placeholder', 'Enter your email address');
+    // this.email.nativeElement.classList.add('email');
+    // this.email.nativeElement.focus();
+    this.renderer.setAttribute(this.email.nativeElement, 'placeholder', 'Enter your email address');
+    this.renderer.addClass(this.email.nativeElement, 'email');
+    this.renderer.selectRootElement('#email').focus();
     if (this.message) {
       this.message.days = 30;
       this.cd.detectChanges();
