@@ -5,7 +5,7 @@ import {
   AfterContentInit,
   ContentChild,
   AfterViewInit,
-  ViewChild
+  ViewChild, ChangeDetectorRef
 } from '@angular/core';
 
 import { User } from '../../models/auth-form.interface';
@@ -26,6 +26,9 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
 
   @Output() submitted: EventEmitter<User> = new EventEmitter<User>();
 
+  constructor(private cd: ChangeDetectorRef) {
+  }
+
   ngAfterContentInit(): void {
     if (this.remember) {
       this.remember.checked.subscribe(checked => this.showMessage = checked)
@@ -35,6 +38,7 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
   ngAfterViewInit(): void {
     if (this.message) {
       this.message.days = 30;
+      this.cd.detectChanges();
     }
   }
 
