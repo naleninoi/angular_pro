@@ -27,6 +27,8 @@ export class AuthFormComponent implements AfterContentInit, AfterViewInit {
 
   showMessage = false;
 
+  title = 'Login';
+
   @ContentChild(AuthRememberComponent) remember: AuthRememberComponent;
 
   @ViewChild(AuthMessageComponent) message: AuthMessageComponent;

@@ -1,7 +1,7 @@
 <div>
   <form (ngSubmit)="onSubmit(form.value)" #form="ngForm">
     <ng-content select="h3"></ng-content>
-    <h3>Login</h3>
+    <h3>{{title}}</h3>
     <label>
       Email address
       <input #email type="email" name="email" id="email" ngModel>
@@ -14,5 +14,8 @@
     <auth-message [style.display]="showMessage ? 'inherit' : 'none'">
     </auth-message>
     <ng-content select="button"></ng-content>
+    <button type="submit">
+      Create account
+    </button>
   </form>
 </div>
