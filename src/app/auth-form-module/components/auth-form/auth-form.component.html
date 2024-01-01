@@ -1,6 +1,7 @@
 <div>
   <form (ngSubmit)="onSubmit(form.value)" #form="ngForm">
     <ng-content select="h3"></ng-content>
+    <h3>Login</h3>
     <label>
       Email address
       <input #email type="email" name="email" id="email" ngModel>
