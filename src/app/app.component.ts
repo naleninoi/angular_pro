@@ -1,6 +1,6 @@
 import {
   AfterViewInit, ChangeDetectorRef,
-  Component, ComponentRef,
+  Component, ComponentRef, TemplateRef,
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
@@ -17,6 +17,8 @@ export class AppComponent implements AfterViewInit {
 
   @ViewChild('entry', {read: ViewContainerRef}) entry: ViewContainerRef;
 
+  @ViewChild('tmpl') tmpl: TemplateRef<any>;
+
   rememberMe: boolean = false;
 
   constructor(
@@ -29,6 +31,12 @@ export class AppComponent implements AfterViewInit {
     this.component = this.entry.createComponent(AuthFormComponent, {index: 0});
     this.component.instance.title = 'Create account';
     this.component.instance.submitted.subscribe(this.loginUser);
+
+    this.entry.createEmbeddedView(this.tmpl,
+      {
+        $implicit: "Chei Chio",
+        location: "Tundra"
+      });
     this.cdr.detectChanges();
   }
 

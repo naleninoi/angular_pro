@@ -22,5 +22,9 @@
   <div #entry></div>
   <button (click)="destroyComponent()">Destroy</button>
 </div>
+<ng-template #tmpl let-name let-location="location">
+  My name is: {{name}}<br/>
+  My location is: {{location}}
+</ng-template>
 
 
