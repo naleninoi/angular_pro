@@ -1,6 +1,6 @@
 import {
   AfterViewInit, ChangeDetectorRef,
-  Component,
+  Component, ComponentRef,
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
@@ -13,6 +13,8 @@ import { AuthFormComponent } from './auth-form-module/components/auth-form/auth-
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements AfterViewInit {
+  component: ComponentRef<AuthFormComponent>;
+
   @ViewChild('entry', {read: ViewContainerRef}) entry: ViewContainerRef;
 
   rememberMe: boolean = false;
@@ -23,9 +25,10 @@ export class AppComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    const component = this.entry.createComponent(AuthFormComponent);
-    component.instance.title = 'Create account';
-    component.instance.submitted.subscribe(this.loginUser);
+    this.entry.createComponent(AuthFormComponent);
+    this.component = this.entry.createComponent(AuthFormComponent, {index: 0});
+    this.component.instance.title = 'Create account';
+    this.component.instance.submitted.subscribe(this.loginUser);
     this.cdr.detectChanges();
   }
 
@@ -39,5 +42,13 @@ export class AppComponent implements AfterViewInit {
 
   loginUser(user: User) {
     console.log('Login', user, this.rememberMe);
+  }
+
+  destroyComponent() {
+    this.component.destroy();
+  }
+
+  moveComponent() {
+    this.entry.move(this.component.hostView, 1);
   }
 }
