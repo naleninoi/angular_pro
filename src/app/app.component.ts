@@ -27,17 +27,17 @@ export class AppComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.entry.createComponent(AuthFormComponent);
-    this.component = this.entry.createComponent(AuthFormComponent, {index: 0});
-    this.component.instance.title = 'Create account';
-    this.component.instance.submitted.subscribe(this.loginUser);
-
-    this.entry.createEmbeddedView(this.tmpl,
-      {
-        $implicit: "Chei Chio",
-        location: "Tundra"
-      });
-    this.cdr.detectChanges();
+    // this.entry.createComponent(AuthFormComponent);
+    // this.component = this.entry.createComponent(AuthFormComponent, {index: 0});
+    // this.component.instance.title = 'Create account';
+    // this.component.instance.submitted.subscribe(this.loginUser);
+    //
+    // this.entry.createEmbeddedView(this.tmpl,
+    //   {
+    //     $implicit: "Chei Chio",
+    //     location: "Tundra"
+    //   });
+    // this.cdr.detectChanges();
   }
 
   rememberUser(remember: boolean) {

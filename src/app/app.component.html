@@ -17,20 +17,21 @@
 <!--    </button>-->
 <!--  </auth-form>-->
 <!--</div>-->
-<div>
-  <button (click)="moveComponent()">Move</button>
-  <div #entry></div>
-  <button (click)="destroyComponent()">Destroy</button>
-</div>
-<div>
-  <ng-container
-    [ngTemplateOutlet]="tmpl"
-    [ngTemplateOutletContext]="{$implicit: 'Ricky Nelson', location: 'CA'}"
-  ></ng-container>
-</div>
-<ng-template #tmpl let-name let-location="location">
-  My name is: {{name}}<br/>
-  My location is: {{location}}
-</ng-template>
+<!--<div>-->
+<!--  <button (click)="moveComponent()">Move</button>-->
+<!--  <div #entry></div>-->
+<!--  <button (click)="destroyComponent()">Destroy</button>-->
+<!--</div>-->
+<!--<div>-->
+<!--  <ng-container-->
+<!--    [ngTemplateOutlet]="tmpl"-->
+<!--    [ngTemplateOutletContext]="{$implicit: 'Ricky Nelson', location: 'CA'}"-->
+<!--  ></ng-container>-->
+<!--</div>-->
+<!--<ng-template #tmpl let-name let-location="location">-->
+<!--  My name is: {{name}}<br/>-->
+<!--  My location is: {{location}}-->
+<!--</ng-template>-->
+<app-credit-card-form></app-credit-card-form>
 
 

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AuthFormModule } from './auth-form-module/auth-form.module';
+import { CreditCardModule } from './credit-card-module/credit-card.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { AuthFormModule } from './auth-form-module/auth-form.module';
   ],
   imports: [
     BrowserModule,
-    AuthFormModule
+    AuthFormModule,
+    CreditCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
