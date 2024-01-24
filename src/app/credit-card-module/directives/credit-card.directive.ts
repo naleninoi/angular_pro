@@ -15,7 +15,7 @@ export class CreditCardDirective {
 
     let numbers = [];
     for (let i = 0; i < trimmed.length; i += 4) {
-      const part = trimmed.substring(i, 4)
+      const part = trimmed.substring(i, i + 4)
       numbers.push(part);
     }
 
