@@ -1,13 +1,9 @@
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import { Directive, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[appCreditCard]'
 })
 export class CreditCardDirective {
-
-  constructor(
-    private element: ElementRef
-  ) { }
 
   @HostListener('input', ['$event'])
   onKeyDown(event: KeyboardEvent) {
