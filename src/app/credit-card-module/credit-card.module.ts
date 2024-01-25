@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 
 import { CreditCardFormComponent } from './components/credit-card-form/credit-card-form.component';
 import { CreditCardDirective } from './directives/credit-card.directive';
+import { TooltipDirective } from './directives/tooltip.directive';
 
 @NgModule({
   declarations: [
     CreditCardFormComponent,
-    CreditCardDirective
+    CreditCardDirective,
+    TooltipDirective
   ],
   imports: [
     CommonModule,
